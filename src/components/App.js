@@ -10,6 +10,8 @@ import Home from './Home'
 import About from './About'
 import Animated from './Animated'
 
+import useCustomCount from '../hooks/useCustomCount'
+
 const Container = styled.div`
   height: 100%;
   position: relative;
@@ -82,6 +84,8 @@ injectGlobal`
 `
 
 function App() {
+  const [customCount, setCustomCount] = useCustomCount()
+
   const classes = makeStyles(theme => ({
     content: {
       flexGrow: 1,
@@ -111,7 +115,9 @@ function App() {
       <Divider />
       <Bottom>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/">
+            <Home totalCount={customCount} setTotalCount={setCustomCount} />
+          </Route>
           <Route path="/about" component={About} />
           <Route path="/animated" component={Animated} />
         </Switch>

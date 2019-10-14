@@ -38,11 +38,11 @@ const CountDisplay = styled.div`
   user-select: none;
 `
 
-function Home() {
+function Home(props) {
   const [count, setCount] = useState(0)
   const [text, setText] = useState('Test Text')
   const [savedText, setSavedText] = useState('')
-
+  const { totalCount, setTotalCount } = props
   return (
     <Container>
       <Section>
@@ -53,7 +53,10 @@ function Home() {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => setCount(count + 1)}
+            onClick={() => {
+              setCount(count + 1)
+              setTotalCount(totalCount + 1)
+            }}
           >
             <FaPlus />
           </Button>
@@ -79,15 +82,16 @@ function Home() {
           </Button>
         </Row>
       </Section>
+      <Section>
+        <Row>Custom Count Hook: {totalCount}</Row>
+      </Section>
     </Container>
   )
 }
 
 Home.propTypes = {
-  count: PropTypes.number,
-  setCount: PropTypes.func,
-  text: PropTypes.string,
-  setText: PropTypes.func,
+  totalCount: PropTypes.number,
+  setTotalCount: PropTypes.func,
 }
 
 export default Home
