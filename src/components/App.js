@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import { hot } from 'react-hot-loader/root'
+import React from 'react'
 import { injectGlobal } from 'emotion'
 import styled from '@emotion/styled'
 import { Route, Link, Switch, withRouter } from 'react-router-dom'
@@ -126,4 +127,4 @@ function App() {
   )
 }
 
-export default App
+export default hot(App)

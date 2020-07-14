@@ -8,7 +8,7 @@ export default () => {
     new HTMLWebpackPlugin({
       template: HTMLWebpackTemplate,
       inject: false,
-      title: 'React App Template',
+      title: 'React Hooks Example',
       mobile: true,
       chunks: ['main'],
       filename: 'index.html',
@@ -18,6 +18,7 @@ export default () => {
   return {
     devtool: 'source-map',
     resolve: {
+      alias: { 'react-dom': '@hot-loader/react-dom' },
       modules: [
         path.join(__dirname, 'src'),
         path.join(__dirname, 'node_modules'),
@@ -30,8 +31,8 @@ export default () => {
       main: ['./src/index.js'],
     },
     output: {
-      path: path.join(__dirname, 'dist'),
       filename: '[name].js',
+      path: path.join(__dirname, 'dist'),
     },
     module: {
       rules: [
@@ -46,7 +47,6 @@ export default () => {
     },
     devServer: {
       open: true,
-      historyApiFallback: true,
     },
     plugins,
   }
