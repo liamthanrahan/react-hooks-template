@@ -83,7 +83,10 @@ function Home(props) {
         </Row>
       </Section>
       <Section>
-        <Row>Custom Count Hook: {totalCount}</Row>
+        <Row>
+          Custom Count Hook:
+          {totalCount}
+        </Row>
       </Section>
     </Container>
   )
